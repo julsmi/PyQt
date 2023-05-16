@@ -9,6 +9,7 @@ class Window(QtWidgets.QWidget):
         super().__init__(parent)
 
         self.initUi()
+        self.initSignals()
 
     def initUi(self) -> None:
         """
@@ -142,8 +143,8 @@ class Window(QtWidgets.QWidget):
         self.pushButtonClearLog.clicked.connect(self.onPushButtonClearLog)  # TODO подключить слот для очистки plainTextEditLog при нажатии на кнопку
 
         self.comboBox.currentTextChanged.connect(self.comboBoxChanged)  # TODO подключить слот для вывода текста в plainTextEditLog при изменении выбранного элемента в comboBox
-        self.spinBox.changeEvent.connect(self.spinBoxChanged)  # TODO подключить слот для вывода значения в plainTextEditLog при изменении значения в spinBox
-        self.dateTimeEdit.changeEvent.connect(self.dateTimeEditChange)  # TODO подключить слот для вывода датывремени в plainTextEditLog при изменении датывремени в dateTimeEdit
+        self.spinBox.valueChanged.connect(self.spinBoxChanged)  # TODO подключить слот для вывода значения в plainTextEditLog при изменении значения в spinBox
+        self.dateTimeEdit.dateTimeChanged.connect(self.dateTimeEditChange)  # TODO подключить слот для вывода датывремени в plainTextEditLog при изменении датывремени в dateTimeEdit
 
     # slots --------------------------------------------------------------
     def onPushButtonLineEditClicked(self) -> None:
